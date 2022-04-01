@@ -40,12 +40,12 @@ exports.user_register_post = async (req, res) => {
 
             // create reusable transporter object using the default SMTP transport
             let transporter = nodemailer.createTransport({
-                host: "smtp.mailgun.org",
+                host: "smtp-relay.sendinblue.com",
                 port: 587,
                 secure: false, // true for 465, false for other ports
                 auth: {
-                    user: process.env.MAILGUN_USERNAME, // generated ethereal user
-                    pass: process.env.MAILGUN_PASSWORD, // generated ethereal password
+                    user: process.env.SENDINBLUE_USERNAME, // generated ethereal user
+                    pass: process.env.SENDINBLUE_PASSWORD, // generated ethereal password
                 },
             });
 
@@ -64,6 +64,7 @@ exports.user_register_post = async (req, res) => {
         }
 
     } catch (error) {
+        console.log(error);
         res.status(500).json(error)
     }
 }
