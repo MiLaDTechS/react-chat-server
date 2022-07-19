@@ -56,7 +56,7 @@ exports.user_register_post = async (req, res) => {
                 subject: "Email Confirm", // Subject line
                 html: `
                     <h4>Click the link below to activate your account</h4>
-                    <a href="${(!process.env.NODE_ENV || 'development') ? process.env.CLIENT_DEVELOPMENT_URL : process.env.CLIENT_PRODUCTION_URL}/confirmemail?token=${jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' })}" target="_blank">Activation Link</a>
+                    <a href="${process.env.NODE_ENV !== 'development' ? process.env.CLIENT_PRODUCTION_URL : process.env.CLIENT_DEVELOPMENT_URL}/confirmemail?token=${jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' })}" target="_blank">Activation Link</a>
                 `, // html body
             });
 
