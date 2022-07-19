@@ -40,9 +40,9 @@ exports.user_register_post = async (req, res) => {
 
             // create reusable transporter object using the default SMTP transport
             let transporter = nodemailer.createTransport({
-                host: "smtp-relay.sendinblue.com",
-                port: 587,
-                secure: false, // true for 465, false for other ports
+                host: "smtp.gmail.com",
+                port: 465,
+                secure: true, // true for 465, false for other ports
                 auth: {
                     user: process.env.SENDINBLUE_USERNAME, // generated ethereal user
                     pass: process.env.SENDINBLUE_PASSWORD, // generated ethereal password
